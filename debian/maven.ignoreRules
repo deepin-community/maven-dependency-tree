@@ -15,5 +15,6 @@
 #   junit junit jar s/3\\..*/3.x/
 
 org.apache.maven.plugins maven-invoker-plugin * * * *
+org.apache.maven.plugins maven-javadoc-plugin * * * *
 org.apache.maven.plugins maven-release-plugin * * * *
 org.apache.rat apache-rat-plugin * * * *

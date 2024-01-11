@@ -27,7 +27,7 @@ import org.apache.maven.shared.dependency.graph.DependencyNode;
  * A dependency node filter that delegates to an artifact filter.
  * 
  * @author <a href="mailto:markhobson@gmail.com">Mark Hobson</a>
- * @version $Id: ArtifactDependencyNodeFilter.java 1684260 2015-06-08 19:57:54Z rfscholte $
+ * @version $Id$
  * @since 1.1
  */
 public class ArtifactDependencyNodeFilter
