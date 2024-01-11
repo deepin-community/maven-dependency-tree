@@ -28,7 +28,7 @@ import org.apache.maven.shared.dependency.graph.DependencyNode;
  * A dependency node filter than only accepts nodes that are ancestors of, or equal to, a given list of nodes.
  * 
  * @author <a href="mailto:markhobson@gmail.com">Mark Hobson</a>
- * @version $Id: AncestorOrSelfDependencyNodeFilter.java 1684260 2015-06-08 19:57:54Z rfscholte $
+ * @version $Id$
  * @since 1.1
  */
 public class AncestorOrSelfDependencyNodeFilter

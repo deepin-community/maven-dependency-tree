@@ -29,7 +29,7 @@ import org.apache.maven.shared.dependency.graph.DependencyNode;
  * A dependency node visitor that collects visited nodes for further processing.
  * 
  * @author <a href="mailto:markhobson@gmail.com">Mark Hobson</a>
- * @version $Id: CollectingDependencyNodeVisitor.java 1684260 2015-06-08 19:57:54Z rfscholte $
+ * @version $Id$
  * @since 1.1
  */
 public class CollectingDependencyNodeVisitor
@@ -49,7 +49,7 @@ public class CollectingDependencyNodeVisitor
      */
     public CollectingDependencyNodeVisitor()
     {
-        nodes = new ArrayList<DependencyNode>();
+        nodes = new ArrayList<>();
     }
 
     // DependencyNodeVisitor methods ------------------------------------------

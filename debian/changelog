@@ -1,9 +1,19 @@
-maven-dependency-tree (3.0.1-1.1) unstable; urgency=medium
+maven-dependency-tree (3.2.1-1) unstable; urgency=medium
 
-  * Non maintainer upload by the Reproducible Builds team.
-  * No source change upload to rebuild on buildd with .buildinfo files.
+  * Team upload.
+  * New upstream release
+    - Removed the patch
+    - No longer depend on libjaxen-java, libjmock-java
+      and libmaven-plugin-testing-java
+    - Updated the maven-debian-helper rules
+  * Depend on libmaven-parent-java
+  * Removed the -java-doc plugin
+  * Standards-Version updated to 4.6.2
+  * Switch to debhelper level 13
+  * Use salsa.debian.org Vcs-* URLs
+  * Track and download the new releases from GitHub
 
- -- Holger Levsen <holger@debian.org>  Tue, 29 Dec 2020 00:53:16 +0100
+ -- Emmanuel Bourg <ebourg@apache.org>  Mon, 09 Jan 2023 18:48:52 +0100
 
 maven-dependency-tree (3.0.1-1) unstable; urgency=medium
 
