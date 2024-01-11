@@ -26,7 +26,7 @@ import org.apache.maven.shared.dependency.graph.filter.DependencyNodeFilter;
  * A dependency node visitor that filters nodes and delegates to another visitor.
  * 
  * @author <a href="mailto:markhobson@gmail.com">Mark Hobson</a>
- * @version $Id: FilteringDependencyNodeVisitor.java 1684260 2015-06-08 19:57:54Z rfscholte $
+ * @version $Id$
  * @since 1.1
  */
 public class FilteringDependencyNodeVisitor

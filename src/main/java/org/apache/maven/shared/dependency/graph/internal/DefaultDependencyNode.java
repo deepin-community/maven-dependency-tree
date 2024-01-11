@@ -22,6 +22,7 @@ package org.apache.maven.shared.dependency.graph.internal;
 import java.util.List;
 
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.model.Exclusion;
 import org.apache.maven.shared.dependency.graph.DependencyNode;
 import org.apache.maven.shared.dependency.graph.traversal.DependencyNodeVisitor;
 
@@ -31,7 +32,7 @@ import org.apache.maven.shared.dependency.graph.traversal.DependencyNodeVisitor;
 public class DefaultDependencyNode implements DependencyNode
 {
     private final Artifact artifact;
-
+    
     private final DependencyNode parent;
 
     private final String premanagedVersion;
@@ -43,6 +44,8 @@ public class DefaultDependencyNode implements DependencyNode
     private List<DependencyNode> children;
 
     private Boolean optional;
+
+    private List<Exclusion> exclusions;
 
     /**
      * Constructs the DefaultDependencyNode.
@@ -64,7 +67,8 @@ public class DefaultDependencyNode implements DependencyNode
     }
 
     public DefaultDependencyNode( DependencyNode parent, Artifact artifact, String premanagedVersion,
-                                  String premanagedScope, String versionConstraint, Boolean optional )
+                                  String premanagedScope, String versionConstraint, Boolean optional,
+                                  List<Exclusion> exclusions )
     {
         this.parent = parent;
         this.artifact = artifact;
@@ -72,6 +76,17 @@ public class DefaultDependencyNode implements DependencyNode
         this.premanagedScope = premanagedScope;
         this.versionConstraint = versionConstraint;
         this.optional = optional;
+        this.exclusions = exclusions;
+    }
+    
+    // user to refer to winner
+    public DefaultDependencyNode( Artifact artifact )
+    {
+        this.artifact = artifact;
+        this.parent = null;
+        this.premanagedScope = null;
+        this.premanagedVersion = null;
+        this.versionConstraint = null;
     }
 
     /**
@@ -158,92 +173,18 @@ public class DefaultDependencyNode implements DependencyNode
         return optional;
     }
 
+    @Override
+    public List<Exclusion> getExclusions()
+    {
+        return exclusions;
+    }
+
     /**
      * @return Stringified representation of this DependencyNode.
      */
     @Override
     public String toNodeString()
     {
-        StringBuffer buffer = new StringBuffer();
-
-        buffer.append( artifact );
-
-        ItemAppender appender = new ItemAppender( buffer, " (", "; ", ")" );
-
-        if ( getPremanagedVersion() != null )
-        {
-            appender.append( "version managed from ", getPremanagedVersion() );
-        }
-
-        if ( getPremanagedScope() != null )
-        {
-            appender.append( "scope managed from ", getPremanagedScope() );
-        }
-
-        if ( getVersionConstraint() != null )
-        {
-            appender.append( "version selected from constraint ", getVersionConstraint() );
-        }
-
-
-        appender.flush();
-        if ( optional != null && optional )
-        {
-            buffer.append( " (optional) " );
-        }
-
-        return buffer.toString();
-    }
-
-    /**
-     * Utility class to concatenate a number of parameters with separator tokens.
-     */
-    private static class ItemAppender
-    {
-        private StringBuffer buffer;
-
-        private String startToken;
-
-        private String separatorToken;
-
-        private String endToken;
-
-        private boolean appended;
-
-        public ItemAppender( StringBuffer buffer, String startToken, String separatorToken, String endToken )
-        {
-            this.buffer = buffer;
-            this.startToken = startToken;
-            this.separatorToken = separatorToken;
-            this.endToken = endToken;
-
-            appended = false;
-        }
-
-        public ItemAppender append( String item1, String item2 )
-        {
-            appendToken();
-
-            buffer.append( item1 ).append( item2 );
-
-            return this;
-        }
-
-        public void flush()
-        {
-            if ( appended )
-            {
-                buffer.append( endToken );
-
-                appended = false;
-            }
-        }
-
-        private void appendToken()
-        {
-            buffer.append( appended ? separatorToken : startToken );
-
-            appended = true;
-        }
+        return String.valueOf( artifact );
     }
 }

@@ -25,7 +25,7 @@ import org.apache.maven.shared.dependency.graph.DependencyNode;
  * Defines a hierarchical visitor for processing dependency node trees.
  * 
  * @author <a href="mailto:markhobson@gmail.com">Mark Hobson</a>
- * @version $Id: DependencyNodeVisitor.java 1595642 2014-05-18 17:32:08Z jvanzyl $
+ * @version $Id$
  * @since 1.1
  */
 public interface DependencyNodeVisitor

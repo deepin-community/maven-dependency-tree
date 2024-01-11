@@ -72,7 +72,7 @@ public class BuildingDependencyNodeVisitor
     {
         this.visitor = visitor;
 
-        parentNodes = new Stack<DependencyNode>();
+        parentNodes = new Stack<>();
     }
 
     // DependencyNodeVisitor methods ------------------------------------------
@@ -88,8 +88,8 @@ public class BuildingDependencyNodeVisitor
             new DefaultDependencyNode( parentNodes.isEmpty() ? null : parentNodes.peek(), node.getArtifact(),
                                        node.getPremanagedVersion(), node.getPremanagedScope(),
                                        node.getVersionConstraint(),
-                                       node.getOptional() );
-        newNode.setChildren( new ArrayList<DependencyNode>() );
+                                       node.getOptional(), node.getExclusions() );
+        newNode.setChildren( new ArrayList<>() );
 
         if ( parentNodes.empty() )
         {

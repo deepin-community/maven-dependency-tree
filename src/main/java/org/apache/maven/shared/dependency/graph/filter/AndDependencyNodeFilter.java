@@ -29,7 +29,7 @@ import org.apache.maven.shared.dependency.graph.DependencyNode;
  * A dependency node filter that logically ANDs together a number of other dependency node filters.
  * 
  * @author <a href="mailto:markhobson@gmail.com">Mark Hobson</a>
- * @version $Id: AndDependencyNodeFilter.java 1684260 2015-06-08 19:57:54Z rfscholte $
+ * @version $Id$
  * @since 1.1
  */
 public class AndDependencyNodeFilter
@@ -52,7 +52,7 @@ public class AndDependencyNodeFilter
      */
     public AndDependencyNodeFilter( DependencyNodeFilter filter1, DependencyNodeFilter filter2 )
     {
-        this( Arrays.asList( new DependencyNodeFilter[] { filter1, filter2 } ) );
+        this( Arrays.asList( filter1, filter2 ) );
     }
 
     /**
